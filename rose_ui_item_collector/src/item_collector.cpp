@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "item_collector.hpp"
+#include "rose_ui_item_collector/item_collector.hpp"
 
 ItemCollector::ItemCollector( string name, ros::NodeHandle n ) 
 	: name_ ( name )

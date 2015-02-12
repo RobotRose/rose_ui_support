@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "item_collector_node.hpp"
+#include "rose_ui_item_collector/item_collector_node.hpp"
 
 int main( int argc, char **argv )
 {
