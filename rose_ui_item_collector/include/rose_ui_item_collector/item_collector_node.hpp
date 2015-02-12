@@ -18,7 +18,7 @@
 
 #include <ros/ros.h>
 
-#include "item_collector.hpp"
+#include "rose_ui_item_collector/item_collector.hpp"
 
 using namespace std;
 
