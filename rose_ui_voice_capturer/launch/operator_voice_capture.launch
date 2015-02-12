@@ -1,7 +1,0 @@
-<launch>
-    <node name="gui_voice_capturer" 
-    	  pkg="gui_voice_capturer" 
-    	  type="gui_voice_capturer_node" 
-    	  args="90000 2 toggle_operator_voice_capturer OperatorVoice">
-    </node>
-</launch>
