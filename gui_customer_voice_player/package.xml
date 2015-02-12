@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<package>
+  <name>gui_customer_voice_player</name>
+  <version>0.0.2</version>
+  <description>The gui_customer_voice_player package</description>
+
+  <maintainer email="langen@robot-rose.nl">Mathijs de Langen</maintainer>
+
+  <license>TODO</license>
+
+
+  <!-- Url tags are optional, but mutiple are allowed, one per tag -->
+  <!-- Optional attribute type can be: website, bugtracker, or repository -->
+  <!-- Example: -->
+  <!-- <url type="website">http://ros.org/wiki/gui_customer_voice_player</url> -->
+   <author email="langen@robot-rose.nl">Mathijs de Langen</author>
+   <author email="beek@robot-rose.nl">Loy van Beek</author>
+
+  <!-- Use build_depend for packages you need at compile time: -->
+  <build_depend>roscomm</build_depend>
+
+  <!-- Use run_depend for packages you need at runtime: -->
+  <run_depend>message_runtime</run_depend>
+  <run_depend>roscomm</run_depend>s
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- You can specify that this package is a metapackage here: -->
+    <!-- <metapackage/> -->
+
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

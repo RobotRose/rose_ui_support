@@ -1,0 +1,9 @@
+# Goal
+string[] 				names
+roscomm/stringlist[] 	types
+---
+# Result
+roscomm/stringlist[]    item_ids
+---
+# Feedback
+roscomm/stringlist[] 	item_ids
