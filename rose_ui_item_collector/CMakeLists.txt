@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gui_item_collector)
+project(rose_ui_item_collector)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x") 
 
@@ -50,10 +50,11 @@ catkin_package(
 include_directories( include ${catkin_INCLUDE_DIRS} )
 
 ## cpp executable
-add_executable( item_collector 	src/item_collector_node.cpp
-						    src/item_collector.cpp
+add_executable( rose_ui_item_collector 	
+					src/item_collector_node.cpp
+					src/item_collector.cpp
 )
 
-add_dependencies( item_collector ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+add_dependencies( rose_ui_item_collector ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 
-target_link_libraries( item_collector ${catkin_LIBRARIES})
+target_link_libraries( rose_ui_item_collector ${catkin_LIBRARIES})
