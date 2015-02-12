@@ -97,7 +97,7 @@ void ItemCollector::CB_serverCancel( SMC* smc )
 	ROS_INFO("ItemCollector::CB_serverCancel()");
 }
 
-void ItemCollector::CB_serverWork( const gui_item_collector::get_itemsGoalConstPtr &goal, SMC* smc )
+void ItemCollector::CB_serverWork( const rose_ui_item_collector::get_itemsGoalConstPtr &goal, SMC* smc )
 {
 	ROS_INFO("ItemCollector::CB_receiveGoal");
 

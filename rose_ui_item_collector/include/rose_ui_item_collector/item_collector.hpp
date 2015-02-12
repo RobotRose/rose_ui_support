@@ -16,7 +16,7 @@
 #include <actionlib/server/simple_action_server.h>
 #include <actionlib/client/simple_action_client.h>
 
-#include "gui_item_collector/get_itemsAction.h"
+#include "rose_ui_item_collector/get_itemsAction.h"
 
 #include "gui_item_selector/itemsAction.h"
 #include "gui_item_selector/itemsGoal.h"
@@ -26,7 +26,7 @@
 #include "server_multiple_client/server_multiple_client.hpp"
 #include "roscomm/stringlist.h"
 
-typedef ServerMultipleClient<gui_item_collector::get_itemsAction> SMC;
+typedef ServerMultipleClient<rose_ui_item_collector::get_itemsAction> SMC;
 
 using namespace std;
 using namespace gui_item_selector;
@@ -48,9 +48,9 @@ private:
 	// Server functions
 	void sendResult();
 	void CB_serverCancel( SMC* smc );
-	void CB_serverWork( const gui_item_collector::get_itemsGoalConstPtr &goal, SMC* smc );
+	void CB_serverWork( const rose_ui_item_collector::get_itemsGoalConstPtr &goal, SMC* smc );
 
-	gui_item_collector::get_itemsResult 	result_;
+	rose_ui_item_collector::get_itemsResult 	result_;
 	gui_item_selector::itemsResultConstPtr 	received_result_;
 
 	ros::NodeHandle 	n_;
