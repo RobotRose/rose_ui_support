@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gui_connection_monitor)
+project(rose_ui_connection_monitor)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x") 
 
@@ -20,8 +20,8 @@ catkin_package(
 
 include_directories( include ${catkin_INCLUDE_DIRS} )
 
-add_executable( connection_monitor src/connection_monitor_node.cpp)
+add_executable( rose_ui_connection_monitor src/connection_monitor_node.cpp)
 
-add_dependencies( connection_monitor ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME})
+add_dependencies( rose_ui_connection_monitor ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME})
 
-target_link_libraries( connection_monitor ${catkin_LIBRARIES} )
+target_link_libraries( rose_ui_connection_monitor ${catkin_LIBRARIES} )

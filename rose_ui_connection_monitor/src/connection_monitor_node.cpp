@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "connection_monitor_node.hpp"
+#include "rose_ui_connection_monitor/connection_monitor_node.hpp"
 
 int main( int argc, char **argv )
 {
