@@ -10,7 +10,7 @@
 *	Main function to set up ros node
 * 
 ***********************************************************************************/
-#include "item_selector_node.hpp"
+#include "rose_ui_item_selector/item_selector_node.hpp"
 
 int main( int argc, char **argv )
 {

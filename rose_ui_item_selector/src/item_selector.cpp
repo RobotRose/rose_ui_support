@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "item_selector.hpp"
+#include "rose_ui_item_selector/item_selector.hpp"
 
 ItemSelector::ItemSelector(string name, ros::NodeHandle n)
     : n_ ( n )

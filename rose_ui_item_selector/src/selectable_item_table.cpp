@@ -11,7 +11,7 @@
 * 
 ***********************************************************************************/
 
-#include "selectable_item_table.hpp"
+#include "rose_ui_item_selector/selectable_item_table.hpp"
 
 SelectableItemTable::SelectableItemTable()
     : selection_mode_ ( eSingleSelection)

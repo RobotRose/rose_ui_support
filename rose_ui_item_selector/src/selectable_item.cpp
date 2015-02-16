@@ -11,7 +11,7 @@
 * 
 ***********************************************************************************/
 
-#include "selectable_item.hpp"
+#include "rose_ui_item_selector/selectable_item.hpp"
 
 SelectableItem::SelectableItem( string name, string id )
     : id_ ( id )
