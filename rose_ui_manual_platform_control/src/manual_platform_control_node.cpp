@@ -10,7 +10,7 @@
 *  description
 * 
 ***********************************************************************************/
-#include "manual_platform_control_node.hpp"
+#include "rose_ui_manual_platform_control/manual_platform_control_node.hpp"
 
 int main( int argc, char **argv )
 {

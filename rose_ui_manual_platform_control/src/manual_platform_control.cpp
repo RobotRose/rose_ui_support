@@ -10,7 +10,7 @@
 *    description
 * 
 ***********************************************************************************/
-#include "manual_platform_control.hpp"
+#include "rose_ui_manual_platform_control/manual_platform_control.hpp"
 
 ManualPlatformControl::ManualPlatformControl( std::string name, ros::NodeHandle n )
 	: name_ ( name )
