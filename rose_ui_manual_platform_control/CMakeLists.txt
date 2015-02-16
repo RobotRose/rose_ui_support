@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gui_manual_platform_control)
+project(rose_ui_manual_platform_control)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x") 
 
@@ -19,10 +19,10 @@ catkin_package(
 
 include_directories( include ${catkin_INCLUDE_DIRS} )
 
-add_executable( manual_platform_control src/manual_platform_control_node.cpp
+add_executable( rose_ui_manual_platform_control src/manual_platform_control_node.cpp
 										src/manual_platform_control.cpp
 )
 
-add_dependencies( manual_platform_control ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME})
+add_dependencies( rose_ui_manual_platform_control ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME})
 
-target_link_libraries( manual_platform_control ${catkin_LIBRARIES} )
+target_link_libraries( rose_ui_manual_platform_control ${catkin_LIBRARIES} )
