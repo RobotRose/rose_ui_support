@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "overview_camera.hpp"
+#include "rose_ui_overview_camera/overview_camera.hpp"
 
 OverviewCamera::OverviewCamera( string name, ros::NodeHandle n )
 	: name_ ( name )

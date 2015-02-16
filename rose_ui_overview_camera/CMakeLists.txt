@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gui_overview_camera)
+project(rose_ui_overview_camera)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x") 
 
@@ -43,10 +43,10 @@ catkin_package(
 
 include_directories( include ${catkin_INCLUDE_DIRS} )
 
-add_executable( overview_camera 	src/overview_camera_node.cpp
+add_executable( rose_ui_overview_camera 	src/overview_camera_node.cpp
 									src/overview_camera.cpp
 )
 
-add_dependencies( overview_camera ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+add_dependencies( rose_ui_overview_camera ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 
-target_link_libraries( overview_camera ${catkin_LIBRARIES} )
+target_link_libraries( rose_ui_overview_camera ${catkin_LIBRARIES} )

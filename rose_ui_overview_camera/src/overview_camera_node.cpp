@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "overview_camera_node.hpp"
+#include "rose_ui_overview_camera/overview_camera_node.hpp"
 
 int main( int argc, char **argv )
 {
