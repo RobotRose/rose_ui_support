@@ -17,6 +17,6 @@
 #include <ros/ros.h>
 #include <stdio.h>
 
-#include "gui_manual_arm_control/gui_manual_arm_control.hpp"
+#include "rose_ui_manual_arm_control/gui_manual_arm_control.hpp"
 
 #endif // GUI_MANUAL_ARM_CONTROL_NODE_HPP

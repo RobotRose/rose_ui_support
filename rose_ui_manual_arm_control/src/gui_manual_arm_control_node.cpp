@@ -10,7 +10,7 @@
 *   description
 * 
 ***********************************************************************************/
-#include "gui_manual_arm_control/gui_manual_arm_control_node.hpp"
+#include "rose_ui_manual_arm_control/gui_manual_arm_control_node.hpp"
 
 int main(int argc, char **argv)
 {

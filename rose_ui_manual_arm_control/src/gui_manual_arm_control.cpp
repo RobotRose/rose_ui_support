@@ -10,7 +10,7 @@
 *   description
 * 
 ***********************************************************************************/
-#include "gui_manual_arm_control/gui_manual_arm_control.hpp"
+#include "rose_ui_manual_arm_control/gui_manual_arm_control.hpp"
 
 GuiManualArmControl::GuiManualArmControl( std::string name, ros::NodeHandle n )
     : name_ ( name )
