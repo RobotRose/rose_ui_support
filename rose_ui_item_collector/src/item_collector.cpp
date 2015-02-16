@@ -19,7 +19,7 @@ ItemCollector::ItemCollector( string name, ros::NodeHandle n )
                        boost::bind(&ItemCollector::CB_serverCancel, this, _1))
 {
 	// Add client
-	smc_.addClient<gui_item_selector::itemsAction>("item_selector", boost::bind(&ItemCollector::CB_custom_success, this, _1, _2),
+	smc_.addClient<rose_ui_item_selector::itemsAction>("item_selector", boost::bind(&ItemCollector::CB_custom_success, this, _1, _2),
 																	boost::bind(&ItemCollector::CB_custom_fail, this, _1, _2),
 															  		boost::bind(&ItemCollector::CB_custom_active, this),
 															  		boost::bind(&ItemCollector::CB_custom_feedback, this, _1));	
@@ -66,7 +66,7 @@ void ItemCollector::sendGoalToClients( vector<string> names, vector< vector<stri
 		goal.item_types.push_back(types_for_name);
 	}
 
-	smc_.sendGoal<gui_item_selector::itemsAction>(goal);
+	smc_.sendGoal<rose_ui_item_selector::itemsAction>(goal);
 }
 
 // -------------- Server callback functions

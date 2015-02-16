@@ -17,14 +17,14 @@
 
 #include "rose_datamanager_api/datamanager_api.hpp"
 
-#include "gui_item_selector/item_selected.h"
-#include "gui_item_selector/item_selection.h"
-#include "gui_item_selector/items.h"
+#include "rose_ui_item_selector/item_selected.h"
+#include "rose_ui_item_selector/item_selection.h"
+#include "rose_ui_item_selector/items.h"
 
-#include "gui_item_selector/itemsAction.h"
-#include "gui_item_selector/itemsGoal.h"
-#include "gui_item_selector/itemsFeedback.h"
-#include "gui_item_selector/itemsResult.h"
+#include "rose_ui_item_selector/itemsAction.h"
+#include "rose_ui_item_selector/itemsGoal.h"
+#include "rose_ui_item_selector/itemsFeedback.h"
+#include "rose_ui_item_selector/itemsResult.h"
 
 #include "server_multiple_client/server_multiple_client.hpp"
 
@@ -35,7 +35,7 @@
 
 using namespace std;
 
-typedef ServerMultipleClient<gui_item_selector::itemsAction> SMC;
+typedef ServerMultipleClient<rose_ui_item_selector::itemsAction> SMC;
 
 class ItemSelector
 {
@@ -47,16 +47,16 @@ public:
     int  getLastTableSelection();
 
 private:
-    void CB_serverWork( const gui_item_selector::itemsGoalConstPtr &goal, SMC* smc );
+    void CB_serverWork( const rose_ui_item_selector::itemsGoalConstPtr &goal, SMC* smc );
     void CB_serverCancel( SMC* smc );
 
     void sendFeedback();
     void sendResult();
 
-    void CB_itemActivated( const gui_item_selector::item_selected::ConstPtr& selection );
-    void CB_selectionFinished( const gui_item_selector::item_selection::ConstPtr& message );
-    void CB_removeItem( const gui_item_selector::item_selected::ConstPtr& selection );
-    void CB_removeSelection( const gui_item_selector::item_selection::ConstPtr& message );
+    void CB_itemActivated( const rose_ui_item_selector::item_selected::ConstPtr& selection );
+    void CB_selectionFinished( const rose_ui_item_selector::item_selection::ConstPtr& message );
+    void CB_removeItem( const rose_ui_item_selector::item_selected::ConstPtr& selection );
+    void CB_removeSelection( const rose_ui_item_selector::item_selection::ConstPtr& message );
 
     void publishTables();
     void publishEmptyTables();
@@ -83,8 +83,8 @@ private:
 
     SelectableItemTable*    item_table_list_;
 
-    gui_item_selector::itemsFeedback    feedback_;
-    gui_item_selector::itemsResult      result_;
+    rose_ui_item_selector::itemsFeedback    feedback_;
+    rose_ui_item_selector::itemsResult      result_;
 
     boost::mutex::scoped_lock   done_;
 

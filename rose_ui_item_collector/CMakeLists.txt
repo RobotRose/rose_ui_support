@@ -9,7 +9,7 @@ find_package(catkin REQUIRED
 	actionlib_msgs
 	genmsg
 	geometry_msgs
-	gui_item_selector
+	rose_ui_item_selector
 	message_generation
 	roscomm
 	roscpp 
@@ -32,7 +32,7 @@ catkin_package(
 	INCLUDE_DIRS include
 #  LIBRARIES gui_script_interaction
     CATKIN_DEPENDS 
-    	gui_item_selector
+    	rose_ui_item_selector
     	rose_common 
     	server_multiple_client
 	DEPENDS 

@@ -22,7 +22,7 @@ ItemSelector::ItemSelector(string name, ros::NodeHandle n)
     datamanager_ = new DatamanagerAPI();
 
     // Publishers
-    items_pub_       = n_.advertise<gui_item_selector::items>(name + "/items", 1, true);
+    items_pub_       = n_.advertise<rose_ui_item_selector::items>(name + "/items", 1, true);
 
     // Subscribers
     remove_items_sub_            = n_.subscribe(name + "/remove_selection", 1, &ItemSelector::CB_removeSelection, this);
@@ -42,7 +42,7 @@ ItemSelector::~ItemSelector()
 
 }
 
-void ItemSelector::CB_serverWork( const gui_item_selector::itemsGoalConstPtr &goal, SMC* smc )
+void ItemSelector::CB_serverWork( const rose_ui_item_selector::itemsGoalConstPtr &goal, SMC* smc )
 {
     ROS_INFO("ItemSelector::CB_serverWork()");
 
@@ -150,7 +150,7 @@ void ItemSelector::publishTables()
 {
     ROS_INFO("ItemSelector::publishTables()");
 
-    gui_item_selector::items visible_tables;
+    rose_ui_item_selector::items visible_tables;
 
     // To fill the message currectly
     roscomm::stringlist table;
@@ -219,7 +219,7 @@ void ItemSelector::publishTables()
 
 void ItemSelector::publishEmptyTables()
 {
-    gui_item_selector::items visible_tables;
+    rose_ui_item_selector::items visible_tables;
     roscomm::stringlist table;
     roscomm::intlist current_selection;
 
@@ -271,7 +271,7 @@ void ItemSelector::sendResult()
 }
 
 // Callback functions
-void ItemSelector::CB_itemActivated( const gui_item_selector::item_selected::ConstPtr& selection )
+void ItemSelector::CB_itemActivated( const rose_ui_item_selector::item_selected::ConstPtr& selection )
 {
     int table_nr = selection->column;
     int row_nr   = selection->row;
@@ -298,7 +298,7 @@ void ItemSelector::CB_itemActivated( const gui_item_selector::item_selected::Con
     publishTables();
 }
 
-void ItemSelector::CB_removeItem( const gui_item_selector::item_selected::ConstPtr& selection )
+void ItemSelector::CB_removeItem( const rose_ui_item_selector::item_selected::ConstPtr& selection )
 {
     int table_nr = selection->column;
     int row_nr   = selection->row;
@@ -327,13 +327,13 @@ void ItemSelector::CB_removeItem( const gui_item_selector::item_selected::ConstP
     publishTables();
 }
 
-void ItemSelector::CB_selectionFinished( const gui_item_selector::item_selection::ConstPtr& message )
+void ItemSelector::CB_selectionFinished( const rose_ui_item_selector::item_selection::ConstPtr& message )
 {
     if (smc_.hasActiveGoal() )
         sendResult();
 }
 
-void ItemSelector::CB_removeSelection( const gui_item_selector::item_selection::ConstPtr& message )
+void ItemSelector::CB_removeSelection( const rose_ui_item_selector::item_selection::ConstPtr& message )
 {
     //! @todo MdL: Check message.
 

@@ -18,10 +18,10 @@
 
 #include "rose_ui_item_collector/get_itemsAction.h"
 
-#include "gui_item_selector/itemsAction.h"
-#include "gui_item_selector/itemsGoal.h"
-#include "gui_item_selector/itemsFeedback.h"
-#include "gui_item_selector/itemsResult.h"
+#include "rose_ui_item_selector/itemsAction.h"
+#include "rose_ui_item_selector/itemsGoal.h"
+#include "rose_ui_item_selector/itemsFeedback.h"
+#include "rose_ui_item_selector/itemsResult.h"
 
 #include "server_multiple_client/server_multiple_client.hpp"
 #include "roscomm/stringlist.h"
@@ -29,7 +29,7 @@
 typedef ServerMultipleClient<rose_ui_item_collector::get_itemsAction> SMC;
 
 using namespace std;
-using namespace gui_item_selector;
+using namespace rose_ui_item_selector;
 
 class ItemCollector
 {
@@ -51,7 +51,7 @@ private:
 	void CB_serverWork( const rose_ui_item_collector::get_itemsGoalConstPtr &goal, SMC* smc );
 
 	rose_ui_item_collector::get_itemsResult 	result_;
-	gui_item_selector::itemsResultConstPtr 	received_result_;
+	rose_ui_item_selector::itemsResultConstPtr 	received_result_;
 
 	ros::NodeHandle 	n_;
 	string				name_;
