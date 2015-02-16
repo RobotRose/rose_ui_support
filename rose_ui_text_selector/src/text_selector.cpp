@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "text_selector.hpp"
+#include "rose_ui_text_selector/text_selector.hpp"
 
 TextSelector::TextSelector( std::string name, ros::NodeHandle n )
 	: name_ ( name )

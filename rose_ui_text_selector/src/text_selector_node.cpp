@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "text_selector_node.hpp"
+#include "rose_ui_text_selector/text_selector_node.hpp"
 
 int main( int argc, char **argv )
 {
