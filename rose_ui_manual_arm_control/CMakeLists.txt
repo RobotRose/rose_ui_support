@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gui_manual_arm_control)
+project(rose_ui_manual_arm_control)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x") 
 
@@ -33,9 +33,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(gui_manual_arm_control_node src/gui_manual_arm_control_node.cpp  src/gui_manual_arm_control.cpp)
+add_executable(rose_ui_manual_arm_control src/gui_manual_arm_control_node.cpp  src/gui_manual_arm_control.cpp)
 
-target_link_libraries(gui_manual_arm_control_node 
+target_link_libraries(rose_ui_manual_arm_control 
     ${ROS_LIBRARIES} 
     ${catkin_LIBRARIES}
 )
