@@ -16,7 +16,7 @@
 #include <boost/thread/mutex.hpp>
 #include <geometry_msgs/Polygon.h>
 #include <geometry_msgs/PolygonStamped.h>
-#include <gui_map_display/colored_polygon_stamped.h>
+#include <rose_ui_map_display/colored_polygon_stamped.h>
 #include <geometry_msgs/Point.h>
 #include <geometry_msgs/Point32.h>
 #include <geometry_msgs/PointStamped.h>
@@ -31,9 +31,9 @@
 
 #include "rose_datamanager_api/datamanager_api.hpp"
 
-#include "gui_map_display/selection.h"
-#include "gui_map_display/waypoint.h"
-#include "gui_map_display/waypoint_array.h"
+#include "rose_ui_map_display/selection.h"
+#include "rose_ui_map_display/waypoint.h"
+#include "rose_ui_map_display/waypoint_array.h"
 #include "rose_parameter_manager/parameterAction.h"
 #include "rose_parameter_manager/parameterGoal.h"
 #include "rose_parameter_manager/parameterFeedback.h"
@@ -68,7 +68,7 @@ private:
 	void CB_serverWork( const rose_parameter_manager::parameterGoalConstPtr& goal, SMC* smc );
 	void sendResult( bool succes );
 
-	void CB_location_selected( const gui_map_display::selection& selection );
+	void CB_location_selected( const rose_ui_map_display::selection& selection );
 	void CB_robotFootprint( const geometry_msgs::PolygonStamped::ConstPtr &msg );
 	void CB_nagivation( const nav_msgs::Path::ConstPtr &msg );
 	void CB_map( const nav_msgs::OccupancyGrid::ConstPtr& msg );
@@ -79,7 +79,7 @@ private:
     void initializeFootprintAndBumperPolygon();
 
 	void publishWaypoints();
-	gui_map_display::waypoint waypointToMsg(Waypoint wp);
+	rose_ui_map_display::waypoint waypointToMsg(Waypoint wp);
 
 	geometry_msgs::Polygon transformPolygonToMapFrame( const geometry_msgs::PolygonStamped::ConstPtr polygon );
 
@@ -90,7 +90,7 @@ private:
 	std::string 		name_;
 
     rose20_platform::bumpers_state::ConstPtr latest_bumper_state_;
-    gui_map_display::colored_polygon_stamped footprint_poly_;
+    rose_ui_map_display::colored_polygon_stamped footprint_poly_;
     std::map<int, int> bumper_line_mapping_; //TODO: Maybe make the values vectors, so one bumper can map to a collection of line segments
 	
 	ros::Publisher      selection_request_pub_;
