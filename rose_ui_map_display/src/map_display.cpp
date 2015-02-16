@@ -10,7 +10,7 @@
 *    description
 * 
 ***********************************************************************************/
-#include "map_display.hpp"
+#include "rose_ui_map_display/map_display.hpp"
 
 MapDisplay::MapDisplay( string name, ros::NodeHandle n )
 	: name_ ( name )
@@ -25,9 +25,9 @@ MapDisplay::MapDisplay( string name, ros::NodeHandle n )
     selection_request_pub_      = n_.advertise<std_msgs::String>(                           "/map_display/request",         1, true );
     selection_cancel_pub_       = n_.advertise<std_msgs::Empty>(                            "/map_display/request_cancel",  1, true );
     navigation_path_pub_        = n_.advertise<nav_msgs::Path>(                             "/map_display/navigation_path", 1, true );
-    robot_footprint_pub_        = n_.advertise<gui_map_display::colored_polygon_stamped>(   "/map_display/robot_footprint", 1, true );
+    robot_footprint_pub_        = n_.advertise<rose_ui_map_display::colored_polygon_stamped>(   "/map_display/robot_footprint", 1, true );
     map_pub_                    = n_.advertise<nav_msgs::OccupancyGrid>(                    "/map_display/map",             1, true );
-    waypoints_pub_              = n_.advertise<gui_map_display::waypoint_array>(            "/map_display/waypoints",       1, true );
+    waypoints_pub_              = n_.advertise<rose_ui_map_display::waypoint_array>(            "/map_display/waypoints",       1, true );
     
     // Subscribers
     map_sub_                = n_.subscribe( "/map_planner",                             1, &MapDisplay::CB_map,               this );
@@ -63,7 +63,7 @@ void MapDisplay::publishWaypoints()
             add msg to array
         publish array
      */
-    gui_map_display::waypoint_array msg_array;
+    rose_ui_map_display::waypoint_array msg_array;
 
     std::vector<Waypoint> waypoints = datamanager_->getAll<Waypoint>();
     ROS_INFO_NAMED(ROS_NAME, "There are %d waypoints", (int)waypoints.size());
@@ -78,9 +78,9 @@ void MapDisplay::publishWaypoints()
     waypoints_pub_.publish(msg_array);
 }
 
-gui_map_display::waypoint MapDisplay::waypointToMsg(Waypoint wp)
+rose_ui_map_display::waypoint MapDisplay::waypointToMsg(Waypoint wp)
 {
-    gui_map_display::waypoint msg;
+    rose_ui_map_display::waypoint msg;
     PoseStamped poseStamped = wp.getPoseStamped();
 
     bool success = rose_transformations::transformToFrame(tf_, "/map", poseStamped);
@@ -109,7 +109,7 @@ void MapDisplay::CB_redrawWaypoints( const std_msgs::Empty& )
     publishWaypoints();
 }
 
-void MapDisplay::CB_location_selected( const gui_map_display::selection& selection )
+void MapDisplay::CB_location_selected( const rose_ui_map_display::selection& selection )
 {
     if (not smc_->hasActiveGoal() )
         return;
@@ -259,7 +259,7 @@ void MapDisplay::publishFootprint()
     collision_color.b = 0.0;
     collision_color.a = 1.0;
 
-    gui_map_display::colored_polygon_stamped in_map(footprint_poly_);
+    rose_ui_map_display::colored_polygon_stamped in_map(footprint_poly_);
 
     for(int i =0; i<(int)in_map.polygon.points.size(); i++)
     {
@@ -410,7 +410,7 @@ L11 +                        + R22
     L21.x += 0.62; //TODO determine value
     L22.x += 0.77; //TODO determine value
 
-    footprint_poly_ = gui_map_display::colored_polygon_stamped();
+    footprint_poly_ = rose_ui_map_display::colored_polygon_stamped();
     footprint_poly_.header.frame_id = "/base_link";
 
     //Bumper drawing above is defined in clockwise order, but bumpers in embedded software are defined in counter-clockwise order:

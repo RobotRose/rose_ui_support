@@ -1,4 +1,4 @@
-rostopic pub --once /map_display/waypoints gui_map_display/waypoint_array "waypoints:
+rostopic pub --once /map_display/waypoints rose_ui_map_display/waypoint_array "waypoints:
 - id: '1'
   name: 'wp_1'
   x: 0.0

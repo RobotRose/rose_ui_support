@@ -1,4 +1,4 @@
-rostopic pub --once /map_display/robot_footprint gui_map_display/colored_polygon_stamped "header: 
+rostopic pub --once /map_display/robot_footprint rose_ui_map_display/colored_polygon_stamped "header: 
   seq: 8
   stamp: 
     secs: 0

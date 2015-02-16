@@ -10,7 +10,7 @@
 *  description
 * 
 ***********************************************************************************/
-#include "map_display_node.hpp"
+#include "rose_ui_map_display/map_display_node.hpp"
 
 int main( int argc, char **argv )
 {
