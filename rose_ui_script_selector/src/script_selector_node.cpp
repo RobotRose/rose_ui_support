@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "script_selector_node.hpp"
+#include "rose_ui_script_selector/script_selector_node.hpp"
 
 int main( int argc, char **argv )
 {

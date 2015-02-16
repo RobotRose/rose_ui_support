@@ -10,7 +10,7 @@
 *	description
 * 
 ***********************************************************************************/
-#include "script_selector.hpp"
+#include "rose_ui_script_selector/script_selector.hpp"
 
 ScriptSelector::ScriptSelector( string name, ros::NodeHandle n )
 	: name_ ( name )
