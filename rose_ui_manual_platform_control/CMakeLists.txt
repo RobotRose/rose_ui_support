@@ -12,7 +12,7 @@ find_package(catkin REQUIRED
 
 catkin_package(
    	INCLUDE_DIRS include
-#  	LIBRARIES gui_overview_camera
+#  	LIBRARIES rose_ui_overview_camera
 #	CATKIN_DEPENDS rose_datamanager_api factory luctor_classes 
 	DEPENDS geometry_msgs std_msgs roscpp
 )

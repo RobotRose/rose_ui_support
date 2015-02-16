@@ -30,8 +30,8 @@
 #include "bounding_box_finder/uv_point.h"
 #include "bounding_box_finder/uv_bounding_box.h"
 
-#include "gui_overview_camera/selection.h"
-#include "gui_overview_camera/selections.h"
+#include "rose_ui_overview_camera/selection.h"
+#include "rose_ui_overview_camera/selections.h"
 #include "point_extractor/get_point.h"
 
 #include "rose_parameter_manager/parameterAction.h"
@@ -60,15 +60,15 @@ private:
 	void CB_serverWork( const rose_parameter_manager::parameterGoalConstPtr& goal, SMC* smc );
     void sendResult( bool succes );
 
-	void CB_bounding_box_selected( const gui_overview_camera::selection& selection );
-	void CB_pointClicked( const gui_overview_camera::selection& selection );
+	void CB_bounding_box_selected( const rose_ui_overview_camera::selection& selection );
+	void CB_pointClicked( const rose_ui_overview_camera::selection& selection );
 	void CB_newBoundingBoxes( const bounding_box_finder::BoundingBoxVector bb_vector );
 
 	void requestBoundingBoxes( const bool on );
 	void sendNewBoundingBoxes();
 	bool getSelectedBoundingBox( const int x, const int y, bounding_box_finder::BoundingBox& bounding_box );
 
-	gui_overview_camera::selections 	rectangleSelectionFromBoundingBox( bounding_box_finder::BoundingBoxVector bounding_boxes );
+	rose_ui_overview_camera::selections 	rectangleSelectionFromBoundingBox( bounding_box_finder::BoundingBoxVector bounding_boxes );
 
 	DatamanagerAPI* 	 datamanager_;
 	ArmControllerHelper* arm_controller_helper_;
@@ -89,7 +89,7 @@ private:
 	std::string 		name_;
 
 	bounding_box_finder::BoundingBoxVector 		bounding_boxes_;
-	gui_overview_camera::selections				rectangles_;
+	rose_ui_overview_camera::selections				rectangles_;
     OperatorMessaging*			                operator_gui_;
 };
 

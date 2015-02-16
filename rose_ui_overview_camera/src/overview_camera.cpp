@@ -24,7 +24,7 @@ OverviewCamera::OverviewCamera( string name, ros::NodeHandle n )
                               boost::bind(&OverviewCamera::CB_serverCancel, this, _1));
     // Publishers
     selection_request_pub_          = n_.advertise<std_msgs::String>("/overview_camera/request", 1, true);
-    bounding_boxex_in_camera_pub_   = n_.advertise<gui_overview_camera::selections>("/overview_camera/bounding_boxes", 1, true);
+    bounding_boxex_in_camera_pub_   = n_.advertise<rose_ui_overview_camera::selections>("/overview_camera/bounding_boxes", 1, true);
     
     // Subscribers
     bounding_box_selected_sub_      = n_.subscribe("/overview_camera/selection",               1, &OverviewCamera::CB_bounding_box_selected, this);
@@ -43,7 +43,7 @@ OverviewCamera::~OverviewCamera()
 
 }
 
-void OverviewCamera::CB_bounding_box_selected( const gui_overview_camera::selection& selection )
+void OverviewCamera::CB_bounding_box_selected( const rose_ui_overview_camera::selection& selection )
 {
     if (not smc_->hasActiveGoal() )
         return;
@@ -104,7 +104,7 @@ void OverviewCamera::CB_bounding_box_selected( const gui_overview_camera::select
     }
 }
 
-void OverviewCamera::CB_pointClicked( const gui_overview_camera::selection& selection )
+void OverviewCamera::CB_pointClicked( const rose_ui_overview_camera::selection& selection )
 {
     ROS_DEBUG_NAMED(ROS_NAME, "OverviewCamera::CB_pointClicked");
     if (not smc_->hasActiveGoal() )
@@ -213,10 +213,10 @@ void OverviewCamera::sendNewBoundingBoxes()
     bounding_boxex_in_camera_pub_.publish(rectangles_);
 }
 
-gui_overview_camera::selections OverviewCamera::rectangleSelectionFromBoundingBox( bounding_box_finder::BoundingBoxVector bounding_boxes )
+rose_ui_overview_camera::selections OverviewCamera::rectangleSelectionFromBoundingBox( bounding_box_finder::BoundingBoxVector bounding_boxes )
 {   
     ROS_DEBUG_NAMED(ROS_NAME, "OverviewCamera::rectangleSelectionFromBoundingBox");
-    gui_overview_camera::selections         selections;
+    rose_ui_overview_camera::selections         selections;
     bounding_box_finder::convert_bb_to_uv   convert_msg;
     convert_msg.request.bounding_boxes      = bounding_boxes;
         
@@ -228,7 +228,7 @@ gui_overview_camera::selections OverviewCamera::rectangleSelectionFromBoundingBo
         selections.width    = convert_msg.response.camera_width;
         selections.height   = convert_msg.response.camera_height;
 
-        gui_overview_camera::selection          selection;
+        rose_ui_overview_camera::selection          selection;
         bounding_box_finder::uv_bounding_box    uv_bounding_box;
         for ( int i = 0 ; i < uv_bounding_boxes.size() ; i++ )
         {
