@@ -19,9 +19,7 @@
 #include <vector>
 
 #include "selectable_item.hpp"
-#include "selection_mode.hpp"
-
-using namespace std;
+#include "rose_ui_item_selector/selection_mode.hpp"
 
 class SelectableItem;
 
@@ -35,7 +33,7 @@ public:
     void addItem( SelectableItem* item );
     
     template<class T>
-    void addItems( vector< T > items ) 
+    void addItems( std::vector< T > items ) 
     { 
         for ( auto item = items.begin() ; item != items.end() ; item++ ) 
         {
@@ -52,19 +50,19 @@ public:
     void itemSelected( int row_nr );
     void setNoSelection();
 
-    vector<SelectableItem*>  get_itemlist();
+    std::vector<SelectableItem*>  get_itemlist();
     eSelectionMode      get_selection_mode();
     int                 get_last_selection();
 
-    vector<string>      toString();
+    std::vector<std::string>      toString();
     SelectableItem*     getSelectableItem( int i );
     SelectableItem*     getSelectableItemById( std::string id );
-    vector<int>         getSelectedItemPositions();
-    vector<string>      getSelectedItemIds();
+    std::vector<int>         getSelectedItemPositions();
+    std::vector<std::string>      getSelectedItemIds();
     void                removeItem( int i );
 
 private:
-    vector<SelectableItem*>  itemlist_;
+    std::vector<SelectableItem*>  itemlist_;
     SelectableItem*          reference_;
     eSelectionMode      selection_mode_;
     int                 last_selection_;
