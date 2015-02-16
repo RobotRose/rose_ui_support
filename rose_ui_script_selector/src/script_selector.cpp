@@ -20,7 +20,7 @@ ScriptSelector::ScriptSelector( string name, ros::NodeHandle n )
 	datamanager_ = new DatamanagerAPI();
 
     // Publishers
-    scripts_pub_       	 = n_.advertise<gui_script_selector::scripts>( "/script_selector/scripts", 1, true );
+    scripts_pub_       	 = n_.advertise<rose_ui_script_selector::scripts>( "/script_selector/scripts", 1, true );
     getScripts();
     publishScripts();
 
@@ -58,7 +58,7 @@ bool ScriptSelector::compareScripts(Script lhs, Script rhs)
 
 void ScriptSelector::publishScripts()
 {
-	gui_script_selector::scripts scripts;
+	rose_ui_script_selector::scripts scripts;
     for ( auto script = scripts_.begin() ; script != scripts_.end() ; script++ )
 		scripts.scripts.push_back((*script).get_name());
 	
@@ -85,7 +85,7 @@ void ScriptSelector::CB_scriptCancelled ( const std_msgs::Bool& cancelled )
 	client_.cancelGoal();
 }
 
-void ScriptSelector::CB_scriptSelected( const gui_script_selector::script_selected::ConstPtr& selection )
+void ScriptSelector::CB_scriptSelected( const rose_ui_script_selector::script_selected::ConstPtr& selection )
 {
 	ROS_INFO("ScriptSelector::CB_scriptSelected");
 

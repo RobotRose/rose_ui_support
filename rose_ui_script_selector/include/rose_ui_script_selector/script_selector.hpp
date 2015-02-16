@@ -25,8 +25,8 @@
 #include "rose_script_manager/execute_scriptFeedback.h"
 #include "rose_script_manager/execute_scriptResult.h"
 
-#include "gui_script_selector/script_selected.h"
-#include "gui_script_selector/scripts.h"
+#include "rose_ui_script_selector/script_selected.h"
+#include "rose_ui_script_selector/scripts.h"
 
 #include "script/script.hpp"
 #include "std_msgs/Bool.h"
@@ -49,7 +49,7 @@ private:
 	void getScripts();
 	void publishScripts();
 
-	void CB_scriptSelected( const gui_script_selector::script_selected::ConstPtr& selection );
+	void CB_scriptSelected( const rose_ui_script_selector::script_selected::ConstPtr& selection );
 	void CB_scriptCancelled ( const std_msgs::Bool& cancelled );
 
 	void CB_receiveServerActive();
