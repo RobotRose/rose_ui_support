@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gui_map_display)
+project(rose_ui_map_display)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x") 
 
@@ -53,10 +53,10 @@ catkin_package(
 
 include_directories( include ${catkin_INCLUDE_DIRS} )
 
-add_executable( map_display 	src/map_display_node.cpp
+add_executable( rose_ui_map_display 	src/map_display_node.cpp
 								src/map_display.cpp
 )
 
-add_dependencies( map_display ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
+add_dependencies( rose_ui_map_display ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 
-target_link_libraries( map_display ${catkin_LIBRARIES} )
+target_link_libraries( rose_ui_map_display ${catkin_LIBRARIES} )
