@@ -6,18 +6,18 @@ set(CMAKE_CXX_FLAGS "-std=c++0x")
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED 
 	COMPONENTS
-	actionlib 
-	actionlib_msgs 
-	luctor_classes
-	rose_datamanager_api
-	genmsg
-	geometry_msgs
-	message_generation
-	roscomm
-	roscpp 
-	rose_common
-	rospy
-	server_multiple_client
+		actionlib 
+		actionlib_msgs 
+		genmsg
+		geometry_msgs
+		luctor_classes
+		message_generation
+		roscomm
+		roscpp 
+		rose_common
+		rose_datamanager_api
+		rospy
+		server_multiple_client
 )
 
 ################################################
@@ -51,11 +51,15 @@ catkin_package(
 	CATKIN_DEPENDS 
 		actionlib 
 		actionlib_msgs 
-		rose_datamanager_api 
-		luctor_classes 
+		genmsg
+		geometry_msgs
+		luctor_classes
 		message_generation
-		message_runtime 
+		roscomm
+		roscpp 
 		rose_common
+		rose_datamanager_api
+		rospy
 		server_multiple_client
 	DEPENDS 
 )
