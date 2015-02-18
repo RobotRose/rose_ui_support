@@ -11,7 +11,6 @@ find_package(catkin REQUIRED
 	luctor_classes
 	message_generation
 	roscpp 
-	rose20_platform
 	rose_conversions
 	rose_datamanager_api
 	rose_parameter_manager
@@ -42,7 +41,6 @@ catkin_package(
     	factory 
     	geometry_msgs 
     	luctor_classes 
-    	rose20_platform 
     	rose_datamanager_api 
     	rose_parameter_manager
     	rose_transformations

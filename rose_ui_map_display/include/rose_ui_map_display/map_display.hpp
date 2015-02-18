@@ -47,7 +47,7 @@
 #include "rose_transformations/transformations.hpp"
 #include "rose_geometry/geometry.hpp"
 #include "std_msgs/String.h"
-#include "rose20_platform/bumpers_state.h"
+#include "rose_base_msgs/bumpers_state.h"
 
 #define FOOTPRINT_WIDTH 0.60
 #define FOOTPRINT_LENGTH 0.80
@@ -72,7 +72,7 @@ private:
 	void CB_robotFootprint( const geometry_msgs::PolygonStamped::ConstPtr &msg );
 	void CB_nagivation( const nav_msgs::Path::ConstPtr &msg );
 	void CB_map( const nav_msgs::OccupancyGrid::ConstPtr& msg );
-    void CB_bumpers( const rose20_platform::bumpers_state::ConstPtr& msg);
+    void CB_bumpers( const rose_base_msgs::bumpers_state::ConstPtr& msg);
     void CB_saveCurrentLocation( const std_msgs::Empty& );
     void CB_redrawWaypoints( const std_msgs::Empty& );
 
@@ -89,7 +89,7 @@ private:
 	ros::NodeHandle 	n_;
 	std::string 		name_;
 
-    rose20_platform::bumpers_state::ConstPtr latest_bumper_state_;
+    rose_base_msgs::bumpers_state::ConstPtr latest_bumper_state_;
     rose_ui_map_display::colored_polygon_stamped footprint_poly_;
     std::map<int, int> bumper_line_mapping_; //TODO: Maybe make the values vectors, so one bumper can map to a collection of line segments
 	

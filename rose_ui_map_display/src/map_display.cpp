@@ -178,7 +178,7 @@ void MapDisplay::CB_map( const nav_msgs::OccupancyGrid::ConstPtr& msg )
     map_pub_.publish(msg);
 }
 
-void MapDisplay::CB_bumpers( const rose20_platform::bumpers_state::ConstPtr& msg )
+void MapDisplay::CB_bumpers( const rose_base_msgs::bumpers_state::ConstPtr& msg )
 {
     ROS_DEBUG_NAMED(ROS_NAME, "Received %i bumpers", msg->bumper_count);
     latest_bumper_state_ = msg;

@@ -2,7 +2,7 @@
 
 while [ 1 ]
 do
-    $(rostopic pub --once  /lift/bumpers/state rose20_platform/bumpers_state "bumper_count: 8
+    $(rostopic pub --once  /lift/bumpers/state rose_base_msgs/bumpers_state "bumper_count: 8
 bumper_states:
 - true
 - false
@@ -15,7 +15,7 @@ bumper_states:
 
     sleep 0.25
 
-    $(rostopic pub --once  /lift/bumpers/state rose20_platform/bumpers_state "bumper_count: 8
+    $(rostopic pub --once  /lift/bumpers/state rose_base_msgs/bumpers_state "bumper_count: 8
 bumper_states:
 - false
 - true
@@ -28,7 +28,7 @@ bumper_states:
 
     sleep 0.25
 
-    $(rostopic pub --once  /lift/bumpers/state rose20_platform/bumpers_state "bumper_count: 8
+    $(rostopic pub --once  /lift/bumpers/state rose_base_msgs/bumpers_state "bumper_count: 8
 bumper_states:
 - false
 - false
@@ -41,7 +41,7 @@ bumper_states:
 
     sleep 0.25
 
-    $(rostopic pub --once  /lift/bumpers/state rose20_platform/bumpers_state "bumper_count: 8
+    $(rostopic pub --once  /lift/bumpers/state rose_base_msgs/bumpers_state "bumper_count: 8
 bumper_states:
 - false
 - false
@@ -54,7 +54,7 @@ bumper_states:
 
     sleep 0.25
 
-    $(rostopic pub --once  /lift/bumpers/state rose20_platform/bumpers_state "bumper_count: 8
+    $(rostopic pub --once  /lift/bumpers/state rose_base_msgs/bumpers_state "bumper_count: 8
 bumper_states:
 - false
 - false
@@ -67,7 +67,7 @@ bumper_states:
 
     sleep 0.25
 
-    $(rostopic pub --once  /lift/bumpers/state rose20_platform/bumpers_state "bumper_count: 8
+    $(rostopic pub --once  /lift/bumpers/state rose_base_msgs/bumpers_state "bumper_count: 8
 bumper_states:
 - false
 - false
@@ -81,7 +81,7 @@ bumper_states:
 
     sleep 0.25
 
-    $(rostopic pub --once  /lift/bumpers/state rose20_platform/bumpers_state "bumper_count: 8
+    $(rostopic pub --once  /lift/bumpers/state rose_base_msgs/bumpers_state "bumper_count: 8
 bumper_states:
 - false
 - false
@@ -95,7 +95,7 @@ bumper_states:
 
     sleep 0.25
 
-    $(rostopic pub --once  /lift/bumpers/state rose20_platform/bumpers_state "bumper_count: 8
+    $(rostopic pub --once  /lift/bumpers/state rose_base_msgs/bumpers_state "bumper_count: 8
 bumper_states:
 - false
 - false
