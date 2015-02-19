@@ -14,6 +14,7 @@
   <build_depend>geometry_msgs</build_depend>
   <build_depend>luctor_classes</build_depend>
   <build_depend>message_generation</build_depend>
+  <build_depend>rose_base_msgs</build_depend>
   <build_depend>rose_conversions</build_depend>
   <build_depend>rose_datamanager_api</build_depend>
   <build_depend>rose_parameter_manager</build_depend>
@@ -24,7 +25,8 @@
   <run_depend>factory</run_depend>  
   <run_depend>geometry_msgs</run_depend>
   <run_depend>luctor_classes</run_depend>
-  <run_depend>message_generation</run_depend>  
+  <run_depend>message_generation</run_depend>
+  <run_depend>rose_base_msgs</run_depend>
   <run_depend>rose_conversions</run_depend>
   <run_depend>rose_datamanager_api</run_depend>  
   <run_depend>rose_parameter_manager</run_depend>
