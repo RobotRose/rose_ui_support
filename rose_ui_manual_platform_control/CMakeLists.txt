@@ -7,7 +7,7 @@ find_package(catkin REQUIRED
 	geometry_msgs
 	std_msgs
 	roscpp
-	shared_variables
+	rose_shared_variables
 )
 
 catkin_package(
