@@ -23,16 +23,16 @@
 #include "bounding_box_factory/bounding_box_factory.hpp"
 #include "rose_datamanager_api/datamanager_api.hpp"
 
-#include "bounding_box_finder/BoundingBox.h"
-#include "bounding_box_finder/BoundingBoxVector.h"
-#include "bounding_box_finder/convert_bb_to_uv.h"
-#include "bounding_box_finder/toggle.h"
-#include "bounding_box_finder/uv_point.h"
-#include "bounding_box_finder/uv_bounding_box.h"
+#include "rose_bounding_box_finder/BoundingBox.h"
+#include "rose_bounding_box_finder/BoundingBoxVector.h"
+#include "rose_bounding_box_finder/convert_bb_to_uv.h"
+#include "rose_bounding_box_finder/toggle.h"
+#include "rose_bounding_box_finder/uv_point.h"
+#include "rose_bounding_box_finder/uv_bounding_box.h"
 
 #include "rose_ui_overview_camera/selection.h"
 #include "rose_ui_overview_camera/selections.h"
-#include "point_extractor/get_point.h"
+#include "rose_point_extractor/get_point.h"
 
 #include "rose_parameter_manager/parameterAction.h"
 #include "rose_parameter_manager/parameterGoal.h"
@@ -62,13 +62,13 @@ private:
 
 	void CB_bounding_box_selected( const rose_ui_overview_camera::selection& selection );
 	void CB_pointClicked( const rose_ui_overview_camera::selection& selection );
-	void CB_newBoundingBoxes( const bounding_box_finder::BoundingBoxVector bb_vector );
+	void CB_newBoundingBoxes( const rose_bounding_box_finder::BoundingBoxVector bb_vector );
 
 	void requestBoundingBoxes( const bool on );
 	void sendNewBoundingBoxes();
-	bool getSelectedBoundingBox( const int x, const int y, bounding_box_finder::BoundingBox& bounding_box );
+	bool getSelectedBoundingBox( const int x, const int y, rose_bounding_box_finder::BoundingBox& bounding_box );
 
-	rose_ui_overview_camera::selections 	rectangleSelectionFromBoundingBox( bounding_box_finder::BoundingBoxVector bounding_boxes );
+	rose_ui_overview_camera::selections 	rectangleSelectionFromBoundingBox( rose_bounding_box_finder::BoundingBoxVector bounding_boxes );
 
 	DatamanagerAPI* 	 datamanager_;
 	ArmControllerHelper* arm_controller_helper_;
@@ -88,7 +88,7 @@ private:
 	ros::NodeHandle 	n_;
 	std::string 		name_;
 
-	bounding_box_finder::BoundingBoxVector 		bounding_boxes_;
+	rose_bounding_box_finder::BoundingBoxVector 		bounding_boxes_;
 	rose_ui_overview_camera::selections				rectangles_;
     OperatorMessaging*			                operator_gui_;
 };
