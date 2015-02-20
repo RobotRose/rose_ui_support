@@ -31,9 +31,9 @@ OverviewCamera::OverviewCamera( string name, ros::NodeHandle n )
     clicked_point_in_camera_sub_    = n_.subscribe("/overview_camera/point_selected",          1, &OverviewCamera::CB_pointClicked,          this);
     bounding_boxes_in_camera_sub_   = n_.subscribe("/bounding_box_finder/bounding_box_vector", 1, &OverviewCamera::CB_newBoundingBoxes,      this);
 
-    bb_converter_service_           = n_.serviceClient<bounding_box_finder::convert_bb_to_uv>("/bounding_box_convert_srv/convert_bb_to_uv");
-    toggle_bb_service_              = n_.serviceClient<bounding_box_finder::toggle>("/bounding_box_finder/toggle");
-    find_point_service_             = n_.serviceClient<point_extractor::get_point>("/point_extractor/get_point");
+    bb_converter_service_           = n_.serviceClient<rose_bounding_box_finder::convert_bb_to_uv>("/bounding_box_convert_srv/convert_bb_to_uv");
+    toggle_bb_service_              = n_.serviceClient<rose_bounding_box_finder::toggle>("/bounding_box_finder/toggle");
+    find_point_service_             = n_.serviceClient<rose_point_extractor::get_point>("/point_extractor/get_point");
 
     smc_->startServer();
 }
@@ -52,7 +52,7 @@ void OverviewCamera::CB_bounding_box_selected( const rose_ui_overview_camera::se
     rose_parameter_manager::parameterGoalConstPtr goal = smc_->getLastGoal();
     
     // Find point in this rectangle
-    point_extractor::get_point      get_point_msg;
+    rose_point_extractor::get_point      get_point_msg;
     get_point_msg.request.x_min = selection.x1;
     get_point_msg.request.x_max = selection.x2;
     get_point_msg.request.y_min = selection.y1;
@@ -113,7 +113,7 @@ void OverviewCamera::CB_pointClicked( const rose_ui_overview_camera::selection& 
     ROS_DEBUG_NAMED(ROS_NAME, "OverviewCamera::CB_pointClicked::begin");
     rose_parameter_manager::parameterGoalConstPtr goal = smc_->getLastGoal();
 
-    bounding_box_finder::BoundingBox bounding_box;
+    rose_bounding_box_finder::BoundingBox bounding_box;
     if ( not getSelectedBoundingBox( selection.x1, selection.y1, bounding_box ))
     {
         ROS_ERROR("No valid bounding box selected");
@@ -132,7 +132,7 @@ void OverviewCamera::CB_pointClicked( const rose_ui_overview_camera::selection& 
     sendResult( true );
 }
 
-bool OverviewCamera::getSelectedBoundingBox( const int x, const int y, bounding_box_finder::BoundingBox& bounding_box )
+bool OverviewCamera::getSelectedBoundingBox( const int x, const int y, rose_bounding_box_finder::BoundingBox& bounding_box )
 {
     ROS_DEBUG_NAMED(ROS_NAME, "OverviewCamera::getSelectedBoundingBox (%d, %d)", x, y);
 
@@ -170,7 +170,7 @@ void OverviewCamera::CB_serverCancel( SMC* smc )
 
 void OverviewCamera::requestBoundingBoxes( const bool on )
 {
-    bounding_box_finder::toggle   toggle;
+    rose_bounding_box_finder::toggle   toggle;
     toggle.request.on = on;
 
     toggle_bb_service_.call(toggle);
@@ -195,7 +195,7 @@ void OverviewCamera::CB_serverWork( const rose_parameter_manager::parameterGoalC
     }
 }
 
-void OverviewCamera::CB_newBoundingBoxes( const bounding_box_finder::BoundingBoxVector bb_vector )
+void OverviewCamera::CB_newBoundingBoxes( const rose_bounding_box_finder::BoundingBoxVector bb_vector )
 {
     ROS_DEBUG_NAMED(ROS_NAME, "OverviewCamera::CB_newBoundingBoxes");
 
@@ -213,23 +213,23 @@ void OverviewCamera::sendNewBoundingBoxes()
     bounding_boxex_in_camera_pub_.publish(rectangles_);
 }
 
-rose_ui_overview_camera::selections OverviewCamera::rectangleSelectionFromBoundingBox( bounding_box_finder::BoundingBoxVector bounding_boxes )
+rose_ui_overview_camera::selections OverviewCamera::rectangleSelectionFromBoundingBox( rose_bounding_box_finder::BoundingBoxVector bounding_boxes )
 {   
     ROS_DEBUG_NAMED(ROS_NAME, "OverviewCamera::rectangleSelectionFromBoundingBox");
     rose_ui_overview_camera::selections         selections;
-    bounding_box_finder::convert_bb_to_uv   convert_msg;
+    rose_bounding_box_finder::convert_bb_to_uv   convert_msg;
     convert_msg.request.bounding_boxes      = bounding_boxes;
         
     if (bb_converter_service_.call(convert_msg))
     {
-        std::vector<bounding_box_finder::uv_bounding_box> uv_bounding_boxes = convert_msg.response.uv_bounding_box;
+        std::vector<rose_bounding_box_finder::uv_bounding_box> uv_bounding_boxes = convert_msg.response.uv_bounding_box;
 
         // Update camera resolution
         selections.width    = convert_msg.response.camera_width;
         selections.height   = convert_msg.response.camera_height;
 
         rose_ui_overview_camera::selection          selection;
-        bounding_box_finder::uv_bounding_box    uv_bounding_box;
+        rose_bounding_box_finder::uv_bounding_box    uv_bounding_box;
         for ( int i = 0 ; i < uv_bounding_boxes.size() ; i++ )
         {
             uv_bounding_box = uv_bounding_boxes.at(i);
