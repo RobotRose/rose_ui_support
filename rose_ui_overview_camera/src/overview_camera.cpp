@@ -17,7 +17,6 @@ OverviewCamera::OverviewCamera( string name, ros::NodeHandle n )
     , n_ ( n )
 {
 	datamanager_           = new DatamanagerAPI();
-    arm_controller_helper_ = new ArmControllerHelper();
     operator_gui_          = new OperatorMessaging(n_);
 
     smc_ = new SMC(n_, name_, boost::bind(&OverviewCamera::CB_serverWork, this, _1, _2),
@@ -251,7 +250,7 @@ rose_ui_overview_camera::selections OverviewCamera::rectangleSelectionFromBoundi
             selection.y1        = min_y;
             selection.y2        = max_y;
 
-            selection.reachable = arm_controller_helper_->reachable(bounding_boxes_.bounding_box_vector.at(i).pose_stamped);
+            selection.reachable = true; //! @todo MdL [IMPL]: Is this pose reachable for the arm?
 
             selections.boxes.push_back(selection);
         }
