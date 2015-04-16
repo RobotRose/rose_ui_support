@@ -20,17 +20,17 @@
 #include "std_msgs/String.h"
 #include "std_msgs/Int32.h"
 
-#include "arm_controller.hpp"
-#include "arm_controller/manipulateAction.h"
-#include "arm_controller/manipulateGoal.h"
-#include "arm_controller/manipulateResult.h"
-#include "arm_controller/manipulateFeedback.h"
-#include "arm_controller_helper.hpp"
+#include "rose_arm_controller_msgs/set_gripper_widthAction.h"
+#include "rose_arm_controller_msgs/set_gripper_widthGoal.h"
+#include "rose_arm_controller_msgs/set_gripper_widthResult.h"
+#include "rose_arm_controller_msgs/set_gripper_widthFeedback.h"
+
+#include "rose_arm_controller_msgs/get_arms.h"
 
 #include "server_multiple_client/server_multiple_client.hpp"
 
 class GuiManualArmControl
-{    typedef ServerMultipleClient<arm_controller::manipulateAction> SMC;
+{    typedef ServerMultipleClient<rose_arm_controller_msgs::set_gripper_widthAction> SMC;
 
   public:
     GuiManualArmControl( std::string name, ros::NodeHandle n );
@@ -40,12 +40,12 @@ class GuiManualArmControl
     void addClients();
 
     void CB_serverCancel( SMC* smc );
-    void CB_serverWork( const arm_controller::manipulateGoalConstPtr& goal, SMC* smc );
+    void CB_serverWork( const rose_arm_controller_msgs::set_gripper_widthGoalConstPtr& goal, SMC* smc );
     void sendResult(bool succes);
 
   // Custom client succes/fail
-    void CB_action_success( const actionlib::SimpleClientGoalState& state, const arm_controller::manipulateResultConstPtr& result );
-    void CB_action_fail( const actionlib::SimpleClientGoalState& state, const arm_controller::manipulateResultConstPtr& result );
+    void CB_action_success( const actionlib::SimpleClientGoalState& state, const rose_arm_controller_msgs::set_gripper_widthResultConstPtr& result );
+    void CB_action_fail( const actionlib::SimpleClientGoalState& state, const rose_arm_controller_msgs::set_gripper_widthResultConstPtr& result );
 
     void selectLeftCallback(const std_msgs::String::ConstPtr& msg);
 //    void selectRightCallback(const std_msgs::String::ConstPtr& msg);
@@ -56,9 +56,8 @@ class GuiManualArmControl
     ros::NodeHandle            n_;
     SMC*                       smc_;
     std::vector<std::string>   clients_;
-    ArmControllerHelper*       arm_controller_helper_;
 
-    int selectedArm_;
+    std::string                selected_arm_;
 
     ros::Subscriber selectLeftGripperSubscriber_;
 //    ros::Subscriber selectRightGripperSubscriber_;
