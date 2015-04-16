@@ -19,7 +19,6 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <stdio.h>
 
-#include "arm_controller_helper.hpp"
 #include "bounding_box_factory/bounding_box_factory.hpp"
 #include "rose_datamanager_api/datamanager_api.hpp"
 
@@ -71,7 +70,6 @@ private:
 	rose_ui_overview_camera::selections 	rectangleSelectionFromBoundingBox( rose_bounding_box_finder::BoundingBoxVector bounding_boxes );
 
 	DatamanagerAPI* 	 datamanager_;
-	ArmControllerHelper* arm_controller_helper_;
 	SMC*				 smc_;
 	
 	ros::Publisher      selection_request_pub_;
