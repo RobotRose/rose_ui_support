@@ -29,7 +29,7 @@ ManualPlatformControl::ManualPlatformControl( std::string name, ros::NodeHandle 
     stop_sub_               = n_.subscribe( "/manual_platform_control/stop",          1, &ManualPlatformControl::CB_stopMovement,   this );
 
     // Publishers
-    wheel_publisher_        = n_.advertise<geometry_msgs::Twist>("/manual_cmd_vel", 1);
+    wheel_publisher_        = n_.advertise<geometry_msgs::TwistStamped>("/manual_cmd_vel", 1);
 }
 
 ManualPlatformControl::~ManualPlatformControl()
@@ -88,11 +88,12 @@ void ManualPlatformControl::CB_stopMovement  ( const std_msgs::Empty& )
 
 void ManualPlatformControl::publishMovement()
 {
-    geometry_msgs::Twist command_vel;
+    geometry_msgs::TwistStamped command_vel;
 
-    command_vel.linear.x    = current_speed_forward_;
-    command_vel.linear.y    = current_speed_left_;
-    command_vel.angular.z   = current_speed_angle_;
+    command_vel.header.stamp      = ros::Time::now();
+    command_vel.twist.linear.x    = current_speed_forward_;
+    command_vel.twist.linear.y    = current_speed_left_;
+    command_vel.twist.angular.z   = current_speed_angle_;
 
     wheel_publisher_.publish(command_vel);
     ROS_INFO("Movement pulished: %f, %f, %f", current_speed_forward_, current_speed_left_, current_speed_angle_);

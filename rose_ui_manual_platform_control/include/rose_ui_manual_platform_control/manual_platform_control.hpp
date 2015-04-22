@@ -16,6 +16,7 @@
 #include <ros/ros.h>
 
 #include "geometry_msgs/Twist.h"
+#include "geometry_msgs/TwistStamped.h"
 #include "std_msgs/Empty.h"
 #include "rose_shared_variables/shared_variable.hpp"
 
