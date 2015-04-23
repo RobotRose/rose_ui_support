@@ -36,6 +36,9 @@ GuiManualArmControl::GuiManualArmControl( std::string name, ros::NodeHandle n )
     //! @todo MdL [IMPR]: Store multiple arms.
     ros::ServiceClient get_arms_client  = n.serviceClient<rose_arm_controller_msgs::get_arms>("/arm_controller/get_arms");
 
+    // Wait for this service to have come up
+    ros::service::waitForService("/arm_controller/get_arms");
+
     rose_arm_controller_msgs::get_arms get_arms_srv;
     while ( not get_arms_client.call(get_arms_srv) )
     {
